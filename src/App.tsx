@@ -6,7 +6,7 @@ import { DocViewPage } from './pages/DocViewPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/code-dojo">
       <Routes>
         <Route path="/" element={<DeckPage />} />
         <Route path="/card/:id" element={<StudyPage />} />
