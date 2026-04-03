@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { getDocById, getDocs } from '../hooks/useDocs';
+import { getCards } from '../hooks/useCards';
 import { MarkdownRenderer } from '../components/MarkdownRenderer';
 
 export function DocViewPage() {
@@ -148,6 +149,64 @@ export function DocViewPage() {
         <div style={{ fontSize: '16px', lineHeight: 1.8 }}>
           <MarkdownRenderer content={doc.content} />
         </div>
+
+        {/* 관련 플래시 카드 */}
+        {(() => {
+          const relatedCards = getCards().filter(c => c.sourceDoc.includes(docId));
+          if (relatedCards.length === 0) return null;
+          return (
+            <>
+              <hr style={{ border: 'none', borderTop: '1px solid #333', margin: '48px 0 24px' }} />
+              <h2 style={{ color: '#e0e0e0', fontSize: '20px', marginBottom: '16px' }}>
+                관련 Flash Cards ({relatedCards.length})
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
+                {relatedCards.map(card => (
+                  <Link
+                    key={card.id}
+                    to={`/card/${card.id}`}
+                    style={{
+                      display: 'block',
+                      background: '#1e1e1e',
+                      border: '1px solid #333',
+                      borderRadius: '8px',
+                      padding: '14px 20px',
+                      textDecoration: 'none',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = '#555';
+                      e.currentTarget.style.background = '#252525';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = '#333';
+                      e.currentTarget.style.background = '#1e1e1e';
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                      <div>
+                        <span style={{ color: '#666', fontSize: '13px', marginRight: '8px' }}>#{card.id}</span>
+                        <span style={{ color: '#d4d4d4', fontSize: '15px', fontWeight: 500 }}>{card.title}</span>
+                      </div>
+                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                        <span style={{
+                          background: card.difficulty === 'easy' ? '#1a3a1a' : card.difficulty === 'hard' ? '#3a1a1a' : '#3a3a1a',
+                          color: card.difficulty === 'easy' ? '#6bcb77' : card.difficulty === 'hard' ? '#ff6b6b' : '#ffd93d',
+                          padding: '2px 10px',
+                          borderRadius: '12px',
+                          fontSize: '11px',
+                          fontWeight: 500,
+                        }}>
+                          {card.difficulty}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
+          );
+        })()}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ export interface CardData {
   title: string;
   tags: string[];
   difficulty: string;
+  sourceDoc: number[];
   question: string;
   answer: string;
 }
@@ -50,11 +51,20 @@ function parseCard(raw: string): CardData {
   const { data: fm, content } = parseFrontmatter(raw);
   const [question, answer] = content.split(ANSWER_SEPARATOR);
 
+  const sourceDoc = fm.sourceDoc;
+  let sourceDocArr: number[] = [];
+  if (Array.isArray(sourceDoc)) {
+    sourceDocArr = (sourceDoc as (string | number)[]).map(Number);
+  } else if (sourceDoc != null && sourceDoc !== '') {
+    sourceDocArr = [Number(sourceDoc)];
+  }
+
   return {
     id: fm.id as number,
     title: fm.title as string,
     tags: (fm.tags as string[]) ?? [],
     difficulty: (fm.difficulty as string) ?? 'medium',
+    sourceDoc: sourceDocArr,
     question: question.trim(),
     answer: (answer ?? '').trim(),
   };
