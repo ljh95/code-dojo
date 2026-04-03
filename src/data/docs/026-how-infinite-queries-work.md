@@ -7,6 +7,13 @@ tags: [react-query, 번역, 무한쿼리, useInfiniteQuery]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - 무한 쿼리의 retry 버그는 클로저를 활용해 fetchFn 외부에 상태를 끌어올려 해결했다
+> - 키워드: useInfiniteQuery, retryer, 클로저, QueryBehavior, 페이지네이션
+> - 이런 상황에서 다시 읽으면 좋다: 무한 쿼리의 내부 동작 원리를 이해하고 싶을 때
+
+---
+
 ## 배경
 
 이번 주에 React Query의 Infinite Queries에 대해 흥미로운 버그 리포트가 제출되었습니다. 저자는 "다수의 사용자에게 영향을 미치며, 라이브러리 자체의 설계상 제약으로 인한 버그는 없다"고 확신했지만, 이 버그는 예외였습니다.

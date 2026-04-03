@@ -7,6 +7,13 @@ tags: [react-query, 번역, 낙관적업데이트, 동시성]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - 동시 낙관적 업데이트 시 불일치의 창(Window of Inconsistency)을 방지하려면 쿼리 취소와 isMutating 기반 무효화 제한을 조합하라
+> - 키워드: 낙관적업데이트, 동시성, cancelQueries, isMutating, 불일치의창
+> - 이런 상황에서 다시 읽으면 좋다: 낙관적 업데이트에서 UI 깜빡임이나 상태 불일치가 발생할 때
+
+---
+
 [TkDodo](https://bsky.app/profile/tkdodo.eu)의 [Concurrent Optimistic Updates in React Query](https://tkdodo.eu/blog/concurrent-optimistic-updates-in-react-query)를 번역한 글입니다.
 
 ---

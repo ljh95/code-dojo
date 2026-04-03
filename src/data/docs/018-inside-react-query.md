@@ -7,6 +7,13 @@ tags: [react-query, 내부구조, 아키텍처]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query는 QueryClient → QueryCache → Query → QueryObserver 계층으로 구성되며, 핵심 로직은 프레임워크 독립적인 Query Core에 있고 Observer가 컴포넌트 리렌더링을 최적화한다
+> - 키워드: QueryClient, QueryCache, Query, QueryObserver, 상태 머신
+> - 이런 상황에서 다시 읽으면 좋다: React Query의 리렌더링 최적화나 중복 제거 동작 원리를 이해하고 싶을 때
+
+---
+
 > 이 글은 [Inside React Query](https://tkdodo.eu/blog/inside-react-query)를 번역한 글입니다.
 
 최근에 React Query가 내부적으로 어떻게 작동하는지에 대한 질문을 많이 받았습니다.

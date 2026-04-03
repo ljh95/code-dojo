@@ -7,6 +7,13 @@ tags: [react-query, 번역, 캐시]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - Suspense 환경에서 워터폴을 방지하려면 캐시를 미리 채워야 하며, prefetch·Pull(initialData)·Push(setQueryData) 세 가지 전략을 상황에 맞게 선택한다
+> - 키워드: fetch waterfall, prefetchQuery, initialData, setQueryData, Suspense
+> - 이런 상황에서 다시 읽으면 좋다: 리스트→상세 캐시 연동이나 Suspense 도입 시 워터폴 문제를 해결할 때
+
+---
+
 지난주 reactjs에는 프로미스를 일급(first class)으로서 지원하고자 하는 새로운 RFC가 작성되었습니다. 해당 스레드에는 잘못 사용될 경우 페치 워터폴(waterfall)을 야기할 수 있음을 지적하며 논의가 진행되고 있습니다. 페치 워터폴이란 정확히 무엇일까요?
 
 ## 페치 워터폴 (Fetch waterfalls)

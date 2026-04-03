@@ -7,6 +7,13 @@ tags: [react-query, 번역]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - RSC를 지원하는 프레임워크(Next.js, Remix)로 새 프로젝트를 시작한다면 React Query가 불필요할 수 있지만, SPA·무한스크롤·오프라인 등 클라이언트 비동기 상태 관리가 필요한 경우엔 여전히 유효하다
+> - 키워드: React Server Components, 하이브리드 접근법, SPA, 트레이드오프
+> - 이런 상황에서 다시 읽으면 좋다: 새 프로젝트에서 React Query 도입 여부를 판단할 때
+
+---
+
 ![](https://velog.velcdn.com/images/cnsrn1874/post/89ffeb9a-5fc4-4b81-a025-553abc8f2ee5/image.png)
 
 Photo by [Randy Tarampi](https://unsplash.com/ko/@randytarampi)

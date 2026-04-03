@@ -7,6 +7,13 @@ tags: [react-query, 번역, react-router, loader, action]
 date: "2022-08-28"
 ---
 
+> **📌 핵심 요약**
+> - React Router는 "언제" fetch할지, React Query는 "캐싱과 최신화"를 담당하므로 경쟁이 아닌 보완 관계로 함께 사용해야 최적의 UX를 얻는다
+> - 키워드: loader, action, ensureQueryData, stale-while-revalidate, 캐시 무효화
+> - 이런 상황에서 다시 읽으면 좋다: React Router 6.4+ loader와 React Query를 통합 설계할 때
+
+---
+
 [Remix](https://remix.run/)가 판도를 바꾸고 있으며, 그들의 데이터 페칭 개념(loader와 action)을 [React Router 6.4](https://reactrouter.com/en/6.4.0/start/overview)를 통해 순수 클라이언트 사이드 렌더링 애플리케이션에도 가져오고 있습니다. 저는 이 개념을 아주 잘 보여주고, 작지만 기능이 풍부한 앱을 빠르게 만드는 방법을 시연하는 훌륭한 [튜토리얼](https://reactrouter.com/en/6.4.0/start/tutorial)을 살펴보았습니다.
 
 React Router가 데이터 페칭 영역에 진입하면서, 이것이 React Query 같은 기존 데이터 페칭 및 캐싱 라이브러리와 어떻게 경쟁하거나 어우러지는지 이해하는 것이 자연스럽게 흥미로운 주제가 되었습니다. 그래서 여기서 바로 스포일러를 하겠습니다:

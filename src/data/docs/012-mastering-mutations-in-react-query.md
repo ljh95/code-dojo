@@ -7,6 +7,13 @@ tags: [react-query, 번역, mutation]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - useMutation은 명령형으로 동작하며, 변형 후 쿼리 무효화가 가장 안전한 동기화 전략이다
+> - 키워드: useMutation, invalidateQueries, 낙관적 업데이트, mutate vs mutateAsync
+> - 이런 상황에서 다시 읽으면 좋다: mutation 후 캐시 동기화 전략을 고민하거나 낙관적 업데이트 도입을 검토할 때
+
+---
+
 > **역자 주:** TkDodo의 "[Mastering Mutations in React Query](https://tkdodo.eu/blog/mastering-mutations-in-react-query)"를 번역한 문서입니다.
 
 앞서 저희는 React Query가 제공하는 기능과 개념에 대해 많이 다뤄왔습니다. 대부분은 데이터를 가져오는 것이었습니다. 이는 `useQuery`를 통해 이루어졌습니다. 하지만 데이터를 다루는데 있어서 2번째로 중요한 것이 있습니다. 바로 데이터를 업데이트 하는 것입니다.

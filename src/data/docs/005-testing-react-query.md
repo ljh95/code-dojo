@@ -7,6 +7,13 @@ tags: [react-query, 번역, 테스팅]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query 테스트는 네트워크를 msw로 모킹하고, 테스트마다 독립된 QueryClient를 생성하며, retry를 끄고, 비동기 결과를 waitFor로 기다리는 것이 핵심 패턴이다
+> - 키워드: msw, QueryClient, retry, waitFor, renderHook
+> - 이런 상황에서 다시 읽으면 좋다: React Query를 사용하는 컴포넌트나 커스텀 훅의 테스트를 작성할 때
+
+---
+
 > 이 문서는 [TkDodo](https://github.com/tkdodo)의 [Testing React Query](https://tkdodo.eu/blog/testing-react-query)를 번역한 문서입니다.
 
 React Query와 함께 테스트하는 방법에 관한 질문이 많이 올라옵니다. 그 이유 중 하나는 "똑똑한" 컴포넌트(또는 [컨테이너 컴포넌트](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0))를 테스트하는 것이 쉽지 않기 때문입니다. Hooks가 등장하면서 이런 분리 방식은 거의 폐기되었습니다. 이제는 props를 통해 값을 내려주는 대신, 특정 위치에서 훅을 직접 사용하는 것이 더 권장됩니다.

@@ -7,6 +7,13 @@ tags: [react-query, mutation, invalidation, cache, tanstack-query]
 date: "2026-04-03"
 ---
 
+> **📌 핵심 요약**
+> - MutationCache의 전역 콜백을 활용하면 mutation 후 자동 invalidation을 구현할 수 있으며, mutationKey·staleTime·meta 등으로 세밀한 제어가 가능하다
+> - 키워드: MutationCache, 자동 invalidation, mutationKey, meta, cancelRefetch
+> - 이런 상황에서 다시 읽으면 좋다: mutation 후 캐시 무효화 전략을 설계하거나, 수동 invalidation 코드가 반복되어 자동화를 고민할 때
+
+---
+
 > 해당 아티클은 Tkdodo의 [Automatic Query Invalidation after Mutations](https://tkdodo.eu/blog/automatic-query-invalidation-after-mutations) 블로그 글을 번역한 내용입니다.
 
 ## 📝 Intro

@@ -7,6 +7,13 @@ tags: [react-query, 번역, 폼]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - 폼에서 서버 상태를 초기값으로 복사하는 방식과 서버/클라이언트 상태를 분리해 병합하는 방식 각각의 트레이드오프를 이해해야 한다
+> - 키워드: 서버 상태 vs 클라이언트 상태, defaultValues, staleTime, 백그라운드 업데이트
+> - 이런 상황에서 다시 읽으면 좋다: React Query로 가져온 데이터를 폼에 연동하는 구조를 설계할 때
+
+---
+
 > **알립니다**
 > 이 글은 [TkDodo](https://github.com/tkdodo)의 "[React Query and Forms](https://tkdodo.eu/blog/react-query-and-forms)"를 번역한 문서입니다.
 

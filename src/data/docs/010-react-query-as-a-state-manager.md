@@ -7,6 +7,13 @@ tags: [react-query, 번역, 상태관리]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query는 데이터 fetching 라이브러리가 아니라 서버 상태 동기화 도구이며, staleTime 설정만으로 불필요한 네트워크 요청을 줄이고 UX를 크게 개선할 수 있다
+> - 키워드: 비동기 상태 관리, staleTime, stale-while-revalidate, 서버 상태, refetch 전략
+> - 이런 상황에서 다시 읽으면 좋다: React Query를 단순 fetching 도구로만 쓰고 있다고 느낄 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [React Query as a State Manager](https://tkdodo.eu/blog/react-query-as-a-state-manager)를 번역한 문서입니다.
 
 React Query는 "데이터 불러오기 라이브러리"라기보다는 비동기 상태를 관리하는 도구입니다. 실제로 네트워크 요청을 직접 수행하지 않으며, `queryFn`에 전달된 Promise를 처리합니다. fetch, axios, ky 등의 HTTP 클라이언트와 함께 사용됩니다.

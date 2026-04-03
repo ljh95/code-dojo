@@ -7,6 +7,13 @@ tags: [react-query, 번역, 오프라인]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - v4의 networkMode 설정으로 오프라인 시 쿼리 동작을 online/always/offlineFirst 중 선택할 수 있다
+> - 키워드: networkMode, fetchStatus, paused, offlineFirst, 오프라인 지원
+> - 이런 상황에서 다시 읽으면 좋다: 오프라인 환경을 고려한 앱을 설계하거나 fetchStatus와 status의 차이를 이해하고 싶을 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [Offline React Query](https://tkdodo.eu/blog/offline-react-query)를 번역한 문서입니다.
 
 React Query는 비동기 상태 관리자입니다. 프로미스를 제공하기만 하면, 해결되든 거부되든 라이브러리는 만족합니다. 프로미스의 출처는 중요하지 않습니다.

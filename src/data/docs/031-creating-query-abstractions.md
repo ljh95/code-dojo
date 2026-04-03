@@ -7,6 +7,13 @@ tags: [react-query, 번역, 추상화, 패턴]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - useQuery 위에 커스텀 훅 대신 queryOptions 함수로 설정을 추상화하면 타입 안전성과 상호운용성(useQuery, useSuspenseQuery, prefetch 등)을 모두 확보할 수 있다
+> - 키워드: queryOptions, 추상화, 타입추론, 커스텀훅, 합성
+> - 이런 상황에서 다시 읽으면 좋다: React Query 쿼리를 재사용 가능하게 추상화하는 패턴을 정할 때
+
+---
+
 [TkDodo](https://bsky.app/profile/tkdodo.eu)의 [Creating Query Abstractions](https://tkdodo.eu/blog/creating-query-abstractions)를 번역한 글입니다.
 
 ## 개발자와 추상화

@@ -7,6 +7,13 @@ tags: [react-query, 번역, React Context]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Context를 의존성 주입 도구로 활용하면, useQuery 데이터의 암시적 의존성을 명시적으로 만들어 타입 안전하고 리팩터링에 강한 코드를 작성할 수 있다
+> - 키워드: React Context, 의존성 주입, 암시적 의존성, useSuspenseQuery, 타입 안전성
+> - 이런 상황에서 다시 읽으면 좋다: 트리 상위에서 fetch한 데이터를 하위 컴포넌트에서 안전하게 사용하는 패턴이 필요할 때
+
+---
+
 > [TkDodo](https://twitter.com/TkDodo)의 [React Query and React Context](https://tkdodo.eu/blog/react-query-and-react-context)를 번역한 글입니다.
 
 ## 개요

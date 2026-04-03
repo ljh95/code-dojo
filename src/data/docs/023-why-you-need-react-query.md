@@ -7,6 +7,13 @@ tags: [react-query, 번역]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - useEffect + fetch로 작성한 간단한 코드에는 경쟁 상태, 로딩/에러/빈 상태 미처리 등 5가지 버그가 숨어 있으며, React Query는 이를 선언적으로 해결한다
+> - 키워드: useEffect 버그, 경쟁 상태, 비동기 상태 관리, fetch 엣지케이스, signal
+> - 이런 상황에서 다시 읽으면 좋다: useEffect로 데이터를 직접 fetch하는 코드를 리팩터링하거나, React Query 도입을 설득해야 할 때
+
+---
+
 ## 개요
 
 React Query는 React 앱에서 비동기 상태와의 상호작용을 간소화한 라이브러리입니다. 그러나 많은 개발자들이 단순히 `useEffect`에서 `fetch`할 수 있다며 추가 라이브러리가 필요 없다고 주장합니다.

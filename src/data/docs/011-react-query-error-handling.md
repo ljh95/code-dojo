@@ -7,6 +7,13 @@ tags: [react-query, 번역, 에러처리]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query 에러 처리는 로컬 상태, 에러 바운더리, 전역 콜백 세 가지를 상황에 맞게 조합해야 한다
+> - 키워드: Error Boundary, throwOnError, QueryCache onError, 에러 토스트
+> - 이런 상황에서 다시 읽으면 좋다: 에러 처리 전략을 설계하거나 백그라운드 refetch 실패 시 UX를 고민할 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [React Query Error Handling](https://tkdodo.eu/blog/react-query-error-handling)를 번역한 문서입니다.
 
 에러 처리는 비동기 데이터 특히, 데이터를 불러올 때에 있어서 중요한 부분입니다. 우리는 모든 요청이 성공하지 않고 또 모든 Promise가 이행되지 않는다는 점을 명시해야 합니다.

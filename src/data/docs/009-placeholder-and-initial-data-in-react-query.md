@@ -7,6 +7,13 @@ tags: [react-query, 번역, placeholder, initialData]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - initialData는 캐시 레벨에 저장되는 "진짜 데이터"이고, placeholderData는 옵저버 레벨의 "임시 데이터"이므로 용도에 맞게 구분하여 사용해야 한다
+> - 키워드: placeholderData, initialData, 캐시 레벨, 옵저버 레벨, staleTime
+> - 이런 상황에서 다시 읽으면 좋다: 로딩 스피너 없이 즉시 데이터를 보여주고 싶을 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [Placeholder and Initial Data in React Query](https://tkdodo.eu/blog/placeholder-and-initial-data-in-react-query)를 번역한 문서입니다.
 
 이 글은 React Query 사용 시 사용자 경험 향상 방법을 다룹니다. 대부분의 경우 로딩 스피너는 피하고 싶은 요소입니다.

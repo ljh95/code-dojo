@@ -7,6 +7,13 @@ tags: [react-query, 번역, 상태체크]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - 백그라운드 리페치 실패 시 오래된 데이터라도 보여주는 것이 에러 화면으로 전환하는 것보다 나은 UX이므로, status 체크 순서에서 data 존재 여부를 먼저 확인하라
+> - 키워드: status, error, data, 백그라운드리페치, stale-while-revalidate
+> - 이런 상황에서 다시 읽으면 좋다: 에러/로딩/성공 분기 처리 순서를 고민할 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [Status Checks in React Query](https://tkdodo.eu/blog/status-checks-in-react-query)를 번역한 문서입니다.
 
 React Query의 이점 중 하나는 쿼리의 상태(status) 필드에 접근이 쉽다는 점입니다. 쿼리가 로딩 중인지 또는 에러가 발생했는지를 바로 알 수 있습니다. 이를 위해 React Query는 내부의 상태 머신에서 파생된 여러 불리언 플래그 값을 노출시킵니다. [타입](https://github.com/TanStack/query/blob/87358d73582b369f06cc81d0dfa135323df7d43d/packages/query-core/src/types.ts#L441)을 보면 쿼리는 다음과 같은 상태 중 하나를 가질 수 있습니다.

@@ -7,6 +7,13 @@ tags: [react-query, 번역, 쿼리키]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - 쿼리 키는 일반→구체 순으로 구조화하고, 쿼리 키 팩토리 패턴으로 관리하면 무효화와 캐시 조작이 유연해진다
+> - 키워드: 쿼리 키 구조, 쿼리 키 팩토리, invalidateQueries, 선언형 쿼리, 공간 배치
+> - 이런 상황에서 다시 읽으면 좋다: 쿼리 키 설계가 복잡해지거나 mutation 후 캐시 무효화 전략을 고민할 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [Effective React Query Keys](https://tkdodo.eu/blog/effective-react-query-keys)를 번역한 문서입니다.
 
 [쿼리 키](https://react-query.tanstack.com/guides/query-keys)는 React Query에서 매우 중요한 핵심 개념입니다. React Query는 이를 통해 데이터를 먼저 캐시하고 쿼리의 의존성에 변화가 생기면 데이터를 다시 불러오기 때문에 쿼리 키는 꼭 필요합니다. 마지막으로, 필요에 따라 쿼리 캐시와 상호작용 할 수 있습니다. 예를 들어, mutation 이후에 데이터를 업데이트하거나 특정 쿼리를 수동으로 무효화 할 수 있습니다.

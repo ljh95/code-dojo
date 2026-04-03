@@ -7,6 +7,13 @@ tags: [react-query, 번역, FAQ]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query의 흔한 실수들(refetch 매개변수, queryKey 불일치, fetch API 에러 미처리 등)과 올바른 해결 패턴을 정리한 FAQ
+> - 키워드: refetch, queryKey, useQueryClient, initialData vs placeholderData, fetch 에러 처리
+> - 이런 상황에서 다시 읽으면 좋다: React Query가 예상대로 동작하지 않아 디버깅이 필요할 때
+
+---
+
 ## 어떻게 하면 refetch에 매개변수를 넘길 수 있나요?
 
 **짧은 답:** 불가능합니다.

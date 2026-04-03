@@ -7,6 +7,13 @@ tags: [react-query, 번역, queryFn]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - queryFn에 클로저 대신 QueryFunctionContext를 활용하면 queryKey와 매개변수의 동기화 누락을 원천 차단할 수 있다
+> - 키워드: QueryFunctionContext, 쿼리 키 팩토리, 타입 안전성, 인라인 함수, 객체 키
+> - 이런 상황에서 다시 읽으면 좋다: queryFn에 전달하는 매개변수가 많아져서 queryKey와 싱크가 안 맞을 때
+
+---
+
 > **역자 노트**: TkDodo의 "Leveraging the Query Function Context"를 번역한 문서입니다.
 
 우리는 모두 엔지니어로서 개선을 목표로 하며, 시간이 지날수록 이러한 노력이 성공하기를 희망합니다. 새로운 개념을 배우거나 기존 패턴의 한계를 인식하게 됩니다.

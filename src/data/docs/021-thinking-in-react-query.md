@@ -7,6 +7,13 @@ tags: [react-query, 사고방식, 패턴]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query는 데이터 패칭 라이브러리가 아니라 비동기 상태 관리자이며, staleTime 설정과 queryKey 의존성 관리가 올바른 사용의 핵심이다
+> - 키워드: 비동기 상태 관리, staleTime, queryKey, 의존성 배열, 서버 상태
+> - 이런 상황에서 다시 읽으면 좋다: React Query를 처음 도입하거나, 불필요한 refetch가 많아 설정을 재점검할 때
+
+---
+
 > 본 아티클은 Tkdodo의 [Thinking in React Query](https://tkdodo.eu/blog/thinking-in-react-query) 블로그 글을 번역한 내용입니다.
 
 > 이 글은 [여기서](https://www.sxungchxn.dev/blog/b2875688-bd23-4940-9a84-45c7c8f5132f) 더 멋지게 보실 수 있습니다 😆

@@ -7,6 +7,13 @@ tags: [react-query, 번역, 셀렉터, 최적화]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - select 옵션으로 컴포넌트가 구독하는 데이터 범위를 좁혀 불필요한 리렌더링을 줄이고, 비용이 큰 변환은 메모이제이션으로 최적화하라
+> - 키워드: select, 구독최적화, 구조적공유, 메모이제이션, QueryObserver
+> - 이런 상황에서 다시 읽으면 좋다: useQuery 결과로 인한 불필요한 리렌더링을 최적화하고 싶을 때
+
+---
+
 이 글은 [tkdodo의 블로그 30번째 글](https://tkdodo.eu/blog/react-query-selectors-supercharged)을 번역했습니다.
 
 ---

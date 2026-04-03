@@ -7,6 +7,13 @@ tags: [react-query, 번역, TypeScript, 타입안전]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - useQuery에 꺾쇠괄호로 제네릭을 넣는 대신 queryFn 반환 타입을 정확히 정의하고, zod 같은 런타임 검증으로 네트워크 응답의 타입 신뢰를 확보하라
+> - 키워드: 타입 추론, 반환 전용 제네릭, zod, 런타임 검증, 종단간 타입 안전성
+> - 이런 상황에서 다시 읽으면 좋다: React Query + TypeScript에서 타입 단언 없이 안전한 데이터 fetching을 설계할 때
+
+---
+
 ## 서문
 
 TkDodo의 [Type-safe React Query](https://tkdodo.eu/blog/type-safe-react-query)을 번역한 글입니다.

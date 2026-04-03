@@ -7,6 +7,13 @@ tags: [react-query, 번역, 데이터변환]
 date: "2025-02-16"
 ---
 
+> **📌 핵심 요약**
+> - 데이터 변환은 queryFn, 렌더링 함수, select 옵션 중 상황에 맞게 선택하되, select 옵션이 최적화와 부분 구독 면에서 가장 강력하다
+> - 키워드: select, queryFn, 데이터변환, 부분구독, useMemo
+> - 이런 상황에서 다시 읽으면 좋다: 서버 응답 데이터를 컴포넌트에 맞게 가공하는 위치를 결정할 때
+
+---
+
 > **참고**: [TkDodo](https://github.com/tkdodo)의 [React Query Data Transformations](https://tkdodo.eu/blog/react-query-data-transformations)를 번역한 문서입니다.
 
 "react-query에 대한 내 생각"의 두 번째 파트에 오신 것을 환영합니다. 라이브러리와 관련 커뮤니티에 더 많이 관여하면서 사람들이 자주 하는 질문의 몇 가지 패턴을 발견했습니다. 처음에는 모든 질문을 하나의 큰 글로 작성하고 싶었지만 더 관리하기 쉬운 조각으로 나누기로 결정했습니다. 그 중 첫 번째는 꽤 흔하면서도 중요한 일인 데이터 변환입니다.

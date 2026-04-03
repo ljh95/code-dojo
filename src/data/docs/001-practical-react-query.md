@@ -7,6 +7,13 @@ tags: [react-query, 번역, 캐싱, 상태관리]
 date: "2025-02-16"
 ---
 
+> **📌 핵심 요약**
+> - React Query는 서버 상태를 캐시로 관리하는 라이브러리이며, 클라이언트 상태와 서버 상태를 분리하는 사고방식이 핵심이다
+> - 키워드: staleTime, gcTime, queryKey, enabled, 서버상태 vs 클라이언트상태
+> - 이런 상황에서 다시 읽으면 좋다: React Query를 처음 도입하거나 기본 설정이 왜 이렇게 동작하는지 혼란스러울 때
+
+---
+
 > [TkDodo](https://github.com/tkdodo)의 [Practical React Query](https://tkdodo.eu/blog/practical-react-query)를 번역한 문서입니다.
 
 2018년 경 GraphQL과 특히 [Apollo Client](https://www.apollographql.com/docs/react/)가 유명해지면서 Redux를 대체할 수 있을지에 대한 논의가 많았습니다. [Redux는 끝났는가?](https://dev.to/markerikson/redux---not-dead-yet-1d9k)에 대한 질문도 많았죠.

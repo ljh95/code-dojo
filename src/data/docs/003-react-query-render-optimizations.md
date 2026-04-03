@@ -7,6 +7,13 @@ tags: [react-query, 번역, 렌더링최적화]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query는 tracked queries와 구조적 공유(structural sharing)를 통해 불필요한 리렌더링을 자동으로 줄여주며, 수동 최적화보다 이 기본 메커니즘을 이해하는 것이 중요하다
+> - 키워드: notifyOnChangeProps, tracked queries, structural sharing, isFetching, 참조동일성
+> - 이런 상황에서 다시 읽으면 좋다: 데이터가 안 바뀌었는데 리렌더링이 발생하는 이유가 궁금할 때
+
+---
+
 > **알립니다.**
 >
 > "렌더링 최적화는 모든 어플리케이션에 있어서 고급 개념"이며 React Query는 이미 좋은 수준의 기본값을 제공합니다. 불필요한 리렌더링보다 "꼭 이루어져야할 렌더링이 누락되는 것"을 더 지양해야 합니다.

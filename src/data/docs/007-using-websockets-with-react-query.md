@@ -7,6 +7,13 @@ tags: [react-query, 번역, WebSocket]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - WebSocket 이벤트를 받으면 queryClient.invalidateQueries로 캐시를 무효화하는 것이 가장 실용적인 통합 방법이다
+> - 키워드: WebSocket, invalidateQueries, staleTime, 실시간 데이터, 부분 업데이트
+> - 이런 상황에서 다시 읽으면 좋다: 실시간 데이터를 React Query와 함께 다뤄야 할 때
+
+---
+
 > 이 문서는 [TkDodo](https://github.com/tkdodo)의 "Using WebSockets with React Query"를 번역한 것입니다.
 
 React Query와 웹소켓을 사용해서 실시간 데이터를 다루는 방법은 최근에 가장 많이 들어본 질문 중 하나였습니다. 이번 포스트에서는 이 기술을 약간 다뤄보고 이에 대한 제 고찰을 다뤄보겠습니다 :)

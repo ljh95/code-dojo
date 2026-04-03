@@ -7,6 +7,13 @@ tags: [react-query, 번역, queryOptions, API]
 date: ""
 ---
 
+> **📌 핵심 요약**
+> - React Query v5의 queryOptions 헬퍼는 queryKey와 queryFn을 하나의 객체로 묶어 타입 안전성, 코드 재사용성, DX를 동시에 확보하는 핵심 API다
+> - 키워드: queryOptions, Query Factory, DataTag, 타입 안전성, queryKey co-location
+> - 이런 상황에서 다시 읽으면 좋다: 쿼리 키와 함수를 체계적으로 관리하는 패턴을 설계할 때
+
+---
+
 > [TkDodo](https://twitter.com/tkdodo)의 [The Query Options API](https://tkdodo.eu/blog/the-query-options-api)를 번역한 글입니다.
 
 ---
