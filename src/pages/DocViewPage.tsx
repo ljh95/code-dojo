@@ -126,7 +126,7 @@ export function DocViewPage() {
           </a>
         )}
 
-        <div style={{ display: 'flex', gap: '6px', marginBottom: '32px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
           {doc.tags.map(tag => (
             <span
               key={tag}
@@ -143,6 +143,68 @@ export function DocViewPage() {
           ))}
         </div>
 
+        {/* 관련 플래시 카드 - 본문 위에 배치 */}
+        {(() => {
+          const relatedCards = getCards().filter(c => c.sourceDoc.includes(docId));
+          if (relatedCards.length === 0) return null;
+          return (
+            <div style={{
+              background: '#1a1a2e',
+              border: '1px solid #2a2a4a',
+              borderRadius: '8px',
+              padding: '16px 20px',
+              marginBottom: '24px',
+            }}>
+              <div style={{ color: '#9cdcfe', fontSize: '14px', fontWeight: 600, marginBottom: '10px' }}>
+                Flash Cards ({relatedCards.length})
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {relatedCards.map(card => (
+                  <Link
+                    key={card.id}
+                    to={`/card/${card.id}`}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      background: '#252540',
+                      border: '1px solid #333355',
+                      borderRadius: '6px',
+                      padding: '10px 14px',
+                      textDecoration: 'none',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = '#555577';
+                      e.currentTarget.style.background = '#2a2a50';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = '#333355';
+                      e.currentTarget.style.background = '#252540';
+                    }}
+                  >
+                    <div>
+                      <span style={{ color: '#666', fontSize: '12px', marginRight: '8px' }}>#{card.id}</span>
+                      <span style={{ color: '#d4d4d4', fontSize: '14px' }}>{card.title}</span>
+                    </div>
+                    <span style={{
+                      background: card.difficulty === 'easy' ? '#1a3a1a' : card.difficulty === 'hard' ? '#3a1a1a' : '#3a3a1a',
+                      color: card.difficulty === 'easy' ? '#6bcb77' : card.difficulty === 'hard' ? '#ff6b6b' : '#ffd93d',
+                      padding: '2px 8px',
+                      borderRadius: '10px',
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      flexShrink: 0,
+                    }}>
+                      {card.difficulty}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         <hr style={{ border: 'none', borderTop: '1px solid #333', marginBottom: '32px' }} />
 
         {/* 본문 */}
@@ -150,63 +212,6 @@ export function DocViewPage() {
           <MarkdownRenderer content={doc.content} />
         </div>
 
-        {/* 관련 플래시 카드 */}
-        {(() => {
-          const relatedCards = getCards().filter(c => c.sourceDoc.includes(docId));
-          if (relatedCards.length === 0) return null;
-          return (
-            <>
-              <hr style={{ border: 'none', borderTop: '1px solid #333', margin: '48px 0 24px' }} />
-              <h2 style={{ color: '#e0e0e0', fontSize: '20px', marginBottom: '16px' }}>
-                관련 Flash Cards ({relatedCards.length})
-              </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
-                {relatedCards.map(card => (
-                  <Link
-                    key={card.id}
-                    to={`/card/${card.id}`}
-                    style={{
-                      display: 'block',
-                      background: '#1e1e1e',
-                      border: '1px solid #333',
-                      borderRadius: '8px',
-                      padding: '14px 20px',
-                      textDecoration: 'none',
-                      transition: 'all 0.15s',
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = '#555';
-                      e.currentTarget.style.background = '#252525';
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.borderColor = '#333';
-                      e.currentTarget.style.background = '#1e1e1e';
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-                      <div>
-                        <span style={{ color: '#666', fontSize: '13px', marginRight: '8px' }}>#{card.id}</span>
-                        <span style={{ color: '#d4d4d4', fontSize: '15px', fontWeight: 500 }}>{card.title}</span>
-                      </div>
-                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                        <span style={{
-                          background: card.difficulty === 'easy' ? '#1a3a1a' : card.difficulty === 'hard' ? '#3a1a1a' : '#3a3a1a',
-                          color: card.difficulty === 'easy' ? '#6bcb77' : card.difficulty === 'hard' ? '#ff6b6b' : '#ffd93d',
-                          padding: '2px 10px',
-                          borderRadius: '12px',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                        }}>
-                          {card.difficulty}
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </>
-          );
-        })()}
       </div>
     </div>
   );
