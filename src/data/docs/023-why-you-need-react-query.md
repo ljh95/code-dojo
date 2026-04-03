@@ -1,6 +1,6 @@
 ---
 id: 24
-title: "(번역) Why You Need React Query"
+title: "(번역) #23: Why You Need React Query"
 author: "TkDodo (번역: cnsrn1874)"
 source: "https://velog.io/@cnsrn1874/why-you-need-react-query"
 tags: [react-query, 번역]
@@ -21,15 +21,15 @@ React Query는 React 앱에서 비동기 상태와의 상호작용을 간소화�
 // fetch-in-useEffect
 
 function Bookmarks({ category }) {
-  const [data, setData] = useState([])
-  const [error, setError] = useState()
+  const [data, setData] = useState([]);
+  const [error, setError] = useState();
 
   useEffect(() => {
     fetch(`${endpoint}/${category}`)
-      .then(res => res.json())
-      .then(d => setData(d))
-      .catch(e => setError(e))
-  }, [category])
+      .then((res) => res.json())
+      .then((d) => setData(d))
+      .catch((e) => setError(e));
+  }, [category]);
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -51,27 +51,27 @@ function Bookmarks({ category }) {
 // ignore-flag
 
 function Bookmarks({ category }) {
-  const [data, setData] = useState([])
-  const [error, setError] = useState()
+  const [data, setData] = useState([]);
+  const [error, setError] = useState();
 
   useEffect(() => {
-    let ignore = false
+    let ignore = false;
     fetch(`${endpoint}/${category}`)
-      .then(res => res.json())
-      .then(d => {
+      .then((res) => res.json())
+      .then((d) => {
         if (!ignore) {
-          setData(d)
+          setData(d);
         }
       })
-      .catch(e => {
+      .catch((e) => {
         if (!ignore) {
-          setError(e)
+          setError(e);
         }
-      })
+      });
     return () => {
-      ignore = true
-    }
-  }, [category])
+      ignore = true;
+    };
+  }, [category]);
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -87,34 +87,34 @@ function Bookmarks({ category }) {
 // loading-state
 
 function Bookmarks({ category }) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState([])
-  const [error, setError] = useState()
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState();
 
   useEffect(() => {
-    let ignore = false
-    setIsLoading(true)
+    let ignore = false;
+    setIsLoading(true);
     fetch(`${endpoint}/${category}`)
-      .then(res => res.json())
-      .then(d => {
+      .then((res) => res.json())
+      .then((d) => {
         if (!ignore) {
-          setData(d)
+          setData(d);
         }
       })
-      .catch(e => {
+      .catch((e) => {
         if (!ignore) {
-          setError(e)
+          setError(e);
         }
       })
       .finally(() => {
         if (!ignore) {
-          setIsLoading(false)
+          setIsLoading(false);
         }
-      })
+      });
     return () => {
-      ignore = true
-    }
-  }, [category])
+      ignore = true;
+    };
+  }, [category]);
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -128,9 +128,9 @@ function Bookmarks({ category }) {
 // empty-state
 
 function Bookmarks({ category }) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState()  // [] → undefined
-  const [error, setError] = useState()
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(); // [] → undefined
+  const [error, setError] = useState();
   // ... 나머지 코드
 }
 ```
@@ -145,36 +145,36 @@ function Bookmarks({ category }) {
 // reset-state
 
 function Bookmarks({ category }) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState()
-  const [error, setError] = useState()
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
-    let ignore = false
-    setIsLoading(true)
+    let ignore = false;
+    setIsLoading(true);
     fetch(`${endpoint}/${category}`)
-      .then(res => res.json())
-      .then(d => {
+      .then((res) => res.json())
+      .then((d) => {
         if (!ignore) {
-          setData(d)
-          setError(undefined)  // 이전 에러 제거
+          setData(d);
+          setError(undefined); // 이전 에러 제거
         }
       })
-      .catch(e => {
+      .catch((e) => {
         if (!ignore) {
-          setError(e)
-          setData(undefined)  // 이전 데이터 제거
+          setError(e);
+          setData(undefined); // 이전 데이터 제거
         }
       })
       .finally(() => {
         if (!ignore) {
-          setIsLoading(false)
+          setIsLoading(false);
         }
-      })
+      });
     return () => {
-      ignore = true
-    }
-  }, [category])
+      ignore = true;
+    };
+  }, [category]);
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -194,41 +194,41 @@ function Bookmarks({ category }) {
 // error-handling
 
 function Bookmarks({ category }) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState()
-  const [error, setError] = useState()
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
-    let ignore = false
-    setIsLoading(true)
+    let ignore = false;
+    setIsLoading(true);
     fetch(`${endpoint}/${category}`)
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          throw new Error('Failed to fetch')
+          throw new Error("Failed to fetch");
         }
-        return res.json()
+        return res.json();
       })
-      .then(d => {
+      .then((d) => {
         if (!ignore) {
-          setData(d)
-          setError(undefined)
+          setData(d);
+          setError(undefined);
         }
       })
-      .catch(e => {
+      .catch((e) => {
         if (!ignore) {
-          setError(e)
-          setData(undefined)
+          setError(e);
+          setData(undefined);
         }
       })
       .finally(() => {
         if (!ignore) {
-          setIsLoading(false)
+          setIsLoading(false);
         }
-      })
+      });
     return () => {
-      ignore = true
-    }
-  }, [category])
+      ignore = true;
+    };
+  }, [category]);
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -243,15 +243,15 @@ function Bookmarks({ category }) {
 
 function Bookmarks({ category }) {
   const { isLoading, data, error } = useQuery({
-    queryKey: ['bookmarks', category],
+    queryKey: ["bookmarks", category],
     queryFn: () =>
       fetch(`${endpoint}/${category}`).then((res) => {
         if (!res.ok) {
-          throw new Error('Failed to fetch')
+          throw new Error("Failed to fetch");
         }
-        return res.json()
+        return res.json();
       }),
-  })
+  });
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }
@@ -274,15 +274,15 @@ function Bookmarks({ category }) {
 
 function Bookmarks({ category }) {
   const { isLoading, data, error } = useQuery({
-    queryKey: ['bookmarks', category],
+    queryKey: ["bookmarks", category],
     queryFn: ({ signal }) =>
       fetch(`${endpoint}/${category}`, { signal }).then((res) => {
         if (!res.ok) {
-          throw new Error('Failed to fetch')
+          throw new Error("Failed to fetch");
         }
-        return res.json()
+        return res.json();
       }),
-  })
+  });
 
   // 데이터와 에러 상태에 따른 JSX 반환
 }

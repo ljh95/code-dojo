@@ -1,6 +1,6 @@
 ---
 id: 23
-title: "(번역) React Query and React Context"
+title: "(번역) #22: React Query and React Context"
 author: "TkDodo (번역: cnsrn1874)"
 source: "https://velog.io/@cnsrn1874/react-query-and-react-context"
 tags: [react-query, 번역, React Context]
@@ -15,17 +15,17 @@ React Query의 좋은 특징 중 하나는, 쿼리를 컴포넌트 트리 내에
 
 ```tsx
 function ProductTable() {
-  const productQuery = useProductQuery()
+  const productQuery = useProductQuery();
 
   if (productQuery.data) {
-    return <table>...</table>
+    return <table>...</table>;
   }
 
   if (productQuery.isError) {
-    return <ErrorMessage error={productQuery.error} />
+    return <ErrorMessage error={productQuery.error} />;
   }
 
-  return <SkeletonLoader />
+  return <SkeletonLoader />;
 }
 ```
 
@@ -44,16 +44,16 @@ function ProductTable() {
 ```ts
 export const useUserQuery = (id: number) => {
   return useQuery({
-    queryKey: ['user', id],
+    queryKey: ["user", id],
     queryFn: () => fetchUserById(id),
-  })
-}
+  });
+};
 
 export const useCurrentUserQuery = () => {
-  const id = useCurrentUserId()
+  const id = useCurrentUserId();
 
-  return useUserQuery(id)
-}
+  return useUserQuery(id);
+};
 ```
 
 이 쿼리는 로그인한 사용자가 어떤 사용자 권한을 가졌는지 검사하고, 페이지를 실제로 볼 수 있는지 결정하기 위해 컴포넌트 트리의 꽤 위쪽에서 사용되었을 것입니다.
@@ -62,8 +62,8 @@ export const useCurrentUserQuery = () => {
 
 ```tsx
 function UserNameDisplay() {
-  const { data } = useCurrentUserQuery()
-  return <div>User: {data.userName}</div>
+  const { data } = useCurrentUserQuery();
+  return <div>User: {data.userName}</div>;
 }
 ```
 
@@ -111,41 +111,41 @@ React Context는 **의존성 주입** 도구입니다. 컴포넌트가 동작하
 `useCurrentUserQuery`를 사용한 예시에서 의존성을 명시적으로 만들 수 있습니다. 데이터 가용성 검사를 생략하고 싶은 모든 컴포넌트에서 직접 쿼리를 읽는 게 아니라, React Context에서 읽어옵니다.
 
 ```tsx
-const CurrentUserContext = React.createContext<User | null>(null)
+const CurrentUserContext = React.createContext<User | null>(null);
 
 export const useCurrentUserContext = () => {
-  return React.useContext(CurrentUserContext)
-}
+  return React.useContext(CurrentUserContext);
+};
 
 export const CurrentUserContextProvider = ({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) => {
-  const currentUserQuery = useCurrentUserQuery()
+  const currentUserQuery = useCurrentUserQuery();
 
   if (currentUserQuery.isLoading) {
-    return <SkeletonLoader />
+    return <SkeletonLoader />;
   }
 
   if (currentUserQuery.isError) {
-    return <ErrorMessage error={currentUserQuery.error} />
+    return <ErrorMessage error={currentUserQuery.error} />;
   }
 
   return (
     <CurrentUserContext.Provider value={currentUserQuery.data}>
       {children}
     </CurrentUserContext.Provider>
-  )
-}
+  );
+};
 ```
 
 이제 자식 컴포넌트에서 context를 안전하게 읽을 수 있습니다:
 
 ```tsx
 function UserNameDisplay() {
-  const data = useCurrentUserContext()
-  return <div>User: {data.username}</div>
+  const data = useCurrentUserContext();
+  return <div>User: {data.username}</div>;
 }
 ```
 
@@ -161,13 +161,13 @@ React Context는 Provider 없이도 동작하도록 설계되었기 때문에, T
 
 ```tsx
 export const useCurrentUserContext = () => {
-  const currentUser = React.useContext(CurrentUserContext)
+  const currentUser = React.useContext(CurrentUserContext);
   if (!currentUser) {
-    throw new Error('CurrentUserContext: No value provided')
+    throw new Error("CurrentUserContext: No value provided");
   }
 
-  return currentUser
-}
+  return currentUser;
+};
 ```
 
 이렇게 하면 실수로 잘못된 위치에서 접근하는 경우 적절한 오류 메시지와 함께 빠르게 실패할 수 있습니다. TypeScript는 커스텀 훅의 `currentUser` 값을 추론하므로 안전하게 사용할 수 있고 프로퍼티에 접근할 수도 있습니다.

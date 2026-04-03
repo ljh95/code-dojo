@@ -1,6 +1,6 @@
 ---
 id: 16
-title: "(번역) React Query FAQs"
+title: "(번역) #15: React Query FAQs"
 author: "TkDodo (번역: cnsrn1874)"
 source: "https://velog.io/@cnsrn1874/%EB%B2%88%EC%97%AD-React-Query-FAQs"
 tags: [react-query, 번역, FAQ]
@@ -63,13 +63,13 @@ const { data } = useQuery({
 급격한 전환을 완화하려면 `keepPreviousData` 사용:
 
 ```js
-import { keepPreviousData } from '@tanstack/react-query'
+import { keepPreviousData } from "@tanstack/react-query";
 
 const { data, isPlaceholderData } = useQuery({
-  queryKey: ['item', id],
+  queryKey: ["item", id],
   queryFn: () => fetchItem({ id }),
   placeholderData: keepPreviousData,
-})
+});
 ```
 
 이전 데이터를 유지하면서 새 데이터를 가져올 수 있습니다.
@@ -95,27 +95,27 @@ const { data, isPlaceholderData } = useQuery({
 
 ```jsx
 export default function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       <Example />
     </QueryClientProvider>
-  )
+  );
 }
 ```
 
 ✅ 올바른 방법:
 
 ```jsx
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Example />
     </QueryClientProvider>
-  )
+  );
 }
 ```
 
@@ -123,13 +123,13 @@ export default function App() {
 
 ```jsx
 export default function App() {
-  const [queryClient] = React.useState(() => new QueryClient())
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
       <Example />
     </QueryClientProvider>
-  )
+  );
 }
 ```
 
@@ -140,13 +140,16 @@ export default function App() {
 ### useQueryClient 사용 이유
 
 **1. useQuery도 내부적으로 사용함**
+
 - import한 client와 context의 client가 다를 수 있음
 
 **2. 앱과 client 분리**
+
 - 테스트 시 다른 설정값 사용 가능
 - 재시도 옵션 비활성화 등
 
 **3. export 불가능한 경우**
+
 - SSR 사용 시 여러 사용자가 같은 client 공유 방지
 - 마이크로 프런트엔드 격리
 - `queryClient` 생성 시 다른 훅 사용 필요
@@ -181,27 +184,27 @@ const UseQueryClient = ({ children }) => children(useQueryClient())
 
 ```js
 useQuery({
-  queryKey: ['todos', todoId],
+  queryKey: ["todos", todoId],
   queryFn: async () => {
-    const response = await fetch('/todos/' + todoId)
-    return response.json()  // 🚨 에러 처리 안 됨
+    const response = await fetch("/todos/" + todoId);
+    return response.json(); // 🚨 에러 처리 안 됨
   },
-})
+});
 ```
 
 ✅ 올바른 방법:
 
 ```js
 useQuery({
-  queryKey: ['todos', todoId],
+  queryKey: ["todos", todoId],
   queryFn: async () => {
-    const response = await fetch('/todos/' + todoId)
+    const response = await fetch("/todos/" + todoId);
     if (!response.ok) {
-      throw new Error('Network response was not ok')
+      throw new Error("Network response was not ok");
     }
-    return response.json()
+    return response.json();
   },
-})
+});
 ```
 
 ### 로깅 시 에러 다시 throw
@@ -210,34 +213,34 @@ useQuery({
 
 ```ts
 useQuery({
-  queryKey: ['todos', todoId],
+  queryKey: ["todos", todoId],
   queryFn: async () => {
     try {
-      const { data } = await axios.get('/todos/' + todoId)
-      return data
+      const { data } = await axios.get("/todos/" + todoId);
+      return data;
     } catch (error) {
-      console.error(error)
+      console.error(error);
       // 🚨 에러를 throw하지 않음
     }
   },
-})
+});
 ```
 
 ✅ 올바른 방법:
 
 ```ts
 useQuery({
-  queryKey: ['todos', todoId],
+  queryKey: ["todos", todoId],
   queryFn: async () => {
     try {
-      const { data } = await axios.get('/todos/' + todoId)
-      return data
+      const { data } = await axios.get("/todos/" + todoId);
+      return data;
     } catch (error) {
-      console.error(error)
-      throw error  // ✅ 에러 재전파
+      console.error(error);
+      throw error; // ✅ 에러 재전파
     }
   },
-})
+});
 ```
 
 ---
@@ -250,11 +253,11 @@ useQuery({
 
 ```js
 const { data } = useQuery({
-  queryKey: ['todos'],
+  queryKey: ["todos"],
   queryFn: fetchTodos,
   initialData: [],
   staleTime: 5 * 1000,
-})
+});
 ```
 
 `initialData`가 캐시되고 5초간 fresh 상태이므로 refetch가 실행되지 않습니다.
@@ -263,23 +266,23 @@ const { data } = useQuery({
 
 ```js
 const { data } = useQuery({
-  queryKey: ['todos'],
+  queryKey: ["todos"],
   queryFn: fetchTodos,
-  placeholderData: [],  // 캐시되지 않음
+  placeholderData: [], // 캐시되지 않음
   staleTime: 5 * 1000,
-})
+});
 ```
 
 ### 해결책 2: initialDataUpdatedAt 설정
 
 ```js
 const { data } = useQuery({
-  queryKey: ['todos'],
+  queryKey: ["todos"],
   queryFn: fetchTodos,
   initialData: [],
-  initialDataUpdatedAt: 0,  // 처음부터 stale 상태
+  initialDataUpdatedAt: 0, // 처음부터 stale 상태
   staleTime: 5 * 1000,
-})
+});
 ```
 
 ### 페이지네이션 쿼리
@@ -287,25 +290,25 @@ const { data } = useQuery({
 ❌ 잘못된 방법:
 
 ```js
-const [page, setPage] = React.useState(0)
+const [page, setPage] = React.useState(0);
 
 const { data } = useQuery({
-  queryKey: ['todos', page],
+  queryKey: ["todos", page],
   queryFn: () => fetchTodos(page),
-  initialData: initialDataForPageZero,  // 모든 page에 적용됨
+  initialData: initialDataForPageZero, // 모든 page에 적용됨
   staleTime: 5 * 1000,
-})
+});
 ```
 
 ✅ 올바른 방법:
 
 ```js
-const [page, setPage] = React.useState(0)
+const [page, setPage] = React.useState(0);
 
 const { data } = useQuery({
-  queryKey: ['todos', page],
+  queryKey: ["todos", page],
   queryFn: () => fetchTodos(page),
   initialData: page === 0 ? initialDataForPageZero : undefined,
   staleTime: 5 * 1000,
-})
+});
 ```

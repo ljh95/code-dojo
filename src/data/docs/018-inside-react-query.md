@@ -1,6 +1,6 @@
 ---
 id: 19
-title: "Inside React Query"
+title: "(번역) #18: Inside React Query"
 author: "hyunjine"
 source: "https://velog.io/@hyunjine/Inside-React-Query"
 tags: [react-query, 내부구조, 아키텍처]
@@ -24,10 +24,10 @@ React Query가 리렌더링해야하는 시점을 어떻게 알 수 있을까요
 모든 것은 `QueryClient`에서 시작합니다. `QueryClient`는 애플리케이션 시작 시 인스턴스를 생성한 다음 `QueryClientProvider`를 통해 어디에서나 사용할 수 있습니다.
 
 ```js
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // ⬇️ this creates the client
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RestOfYourApp />
     </QueryClientProvider>
-  )
+  );
 }
 ```
 
@@ -67,7 +67,7 @@ function App() {
 
 `Observer`는 쿼리와 이를 사용하려는 컴포넌트 사이의 접착제입니다. `Observer`는 useQuery를 호출할 때 생성되며 항상 정확히 하나의 쿼리를 구독합니다. 그렇기 때문에 `useQuery`에 `queryKey`를 전달해야 합니다. 😉
 
-`Observer`는 조금 더 많은 작업을 수행합니다. `Observer`는 대부분의 최적화가 이루어지는 곳입니다. `Observer`는 컴포넌트가 사용 중인 쿼리의 속성을 알고 있으므로 관련 없는 변경 사항을 알릴 필요가 없습니다. 예를 들어 데이터 필드만 사용하는 경우 백그라운드 refetch에서 _isFetching_이 변경되는 경우 컴포넌트를 다시 렌더링할 필요가 없습니다.
+`Observer`는 조금 더 많은 작업을 수행합니다. `Observer`는 대부분의 최적화가 이루어지는 곳입니다. `Observer`는 컴포넌트가 사용 중인 쿼리의 속성을 알고 있으므로 관련 없는 변경 사항을 알릴 필요가 없습니다. 예를 들어 데이터 필드만 사용하는 경우 백그라운드 refetch에서 *isFetching*이 변경되는 경우 컴포넌트를 다시 렌더링할 필요가 없습니다.
 
 추가로 각 옵저버는 _select_ 옵션을 가질 수 있으며 여기에서 데이터 필드의 어떤 부분에 관심이 있는지 결정할 수 있습니다. 이전에 [#2: React Query Data Transformations](https://tkdodo.eu/blog/react-query-data-transformations#3-using-the-select-option)에서 이 최적화에 대해 쓴 적이 있습니다. `staleTime`또는 interval fetching과 같은 대부분의 타이머는 observer-level에서도 발생합니다.
 
