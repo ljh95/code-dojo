@@ -12,9 +12,22 @@ export function DeckPage() {
 
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 20px' }}>
-      <h1 style={{ color: '#e0e0e0', fontSize: '28px', marginBottom: '8px' }}>
-        Code Flash Cards
-      </h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <h1 style={{ color: '#e0e0e0', fontSize: '28px', margin: 0 }}>
+          Code Flash Cards
+        </h1>
+        <Link to="/docs" style={{
+          color: '#888',
+          textDecoration: 'none',
+          fontSize: '14px',
+          padding: '6px 14px',
+          borderRadius: '6px',
+          border: '1px solid #333',
+          transition: 'all 0.15s',
+        }}>
+          Reading Docs
+        </Link>
+      </div>
       <p style={{ color: '#888', marginBottom: '32px', fontSize: '15px' }}>
         코드 패턴을 보고 문제점을 파악하고, 개선된 설계를 떠올려보세요.
       </p>
