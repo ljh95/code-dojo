@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import type { CardData } from '../hooks/useCards';
+import { getDocs } from '../hooks/useDocs';
 
 interface Props {
   card: CardData;
@@ -45,6 +47,50 @@ export function FlashCard({ card }: Props) {
           ))}
         </div>
       </div>
+
+      {/* 관련 문서 링크 */}
+      {card.sourceDoc.length > 0 && (() => {
+        const allDocs = getDocs();
+        const linked = card.sourceDoc.map(id => allDocs.find(d => d.id === id)).filter(Boolean);
+        if (linked.length === 0) return null;
+        return (
+          <div style={{
+            display: 'flex',
+            gap: '8px',
+            marginBottom: '16px',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+          }}>
+            <span style={{ color: '#666', fontSize: '13px' }}>Reading:</span>
+            {linked.map(doc => (
+              <Link
+                key={doc!.id}
+                to={`/doc/${doc!.id}`}
+                style={{
+                  color: '#9cdcfe',
+                  fontSize: '13px',
+                  textDecoration: 'none',
+                  background: '#1a1a2e',
+                  border: '1px solid #2a2a4a',
+                  padding: '3px 10px',
+                  borderRadius: '6px',
+                  transition: 'all 0.15s',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = '#252540';
+                  e.currentTarget.style.borderColor = '#3a3a6a';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = '#1a1a2e';
+                  e.currentTarget.style.borderColor = '#2a2a4a';
+                }}
+              >
+                {doc!.title}
+              </Link>
+            ))}
+          </div>
+        );
+      })()}
 
       {/* 질문 카드 */}
       <div style={{
